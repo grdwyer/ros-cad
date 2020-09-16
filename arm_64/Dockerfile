@@ -1,9 +1,5 @@
 FROM arm64v8/ros:foxy
 
-USER root
-
-ENV DEBIAN_FRONTEND=noninteractive
-
 ##############
 # apt update #
 ##############

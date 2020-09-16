@@ -1,5 +1,6 @@
 FROM arm64v8/ros:foxy
 
+COPY qemu-arm-static /usr/bin
 ##############
 # apt update #
 ##############

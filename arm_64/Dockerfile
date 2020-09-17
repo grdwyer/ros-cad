@@ -1,6 +1,6 @@
 FROM arm64v8/ros:foxy
 
-COPY qemu-arm-static /usr/bin
+#COPY qemu-arm-static /usr/bin
 ##############
 # apt update #
 ##############
@@ -58,8 +58,9 @@ RUN ninja install
 RUN pip3 install svgwrite
 
 ###########
-# Jupyter #
+# Jupyter 
 ###########
+RUN apt install libffi-dev
 RUN pip3 install jupyterlab
 RUN pip3 install notebook
 

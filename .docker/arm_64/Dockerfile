@@ -117,4 +117,16 @@ RUN cmake \
 
 RUN make -j3 && make install
 
+###########
+# Cleanup #
+###########
+RUN rm -rf /var/lib/apt/lists/*
+
+#######################
+# Python-OCC examples #
+#######################
+
+RUN mkdir -p /dev_ws/src
+WORKDIR /dev_ws/src
+RUN git clone https://github.com/tpaviot/pythonocc-demos.git
 

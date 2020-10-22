@@ -31,7 +31,7 @@ Change ownership to the user with
 
 ## Building
 
-### X86_64 (computer with Intel or AMD processors)
+### AMD64 (computer with Intel or AMD processors)
 
 There is a docker file that contains the packages and all the dependencies. 
 Where the general workflow to build the image:  
@@ -42,7 +42,7 @@ Where the general workflow to build the image:
 ```
 git clone git@github.com:grdwyer/ros-cad.git
 cd ros-cad
-docker build --pull --rm -f ./.docker/x86_64/Dockerfile  -t ros-cad:latest .
+docker build --pull --rm -f ./.docker/amd_64/Dockerfile  -t gdwyer/ros-cad:latest-amd64 .
 ```
 If you are changing the Dockerfile remove the `--rm` tag to keep your intermediate builds. 
 
@@ -52,7 +52,20 @@ Same as above with a tiny change to the build command
 ```
 git clone git@github.com:grdwyer/ros-cad.git
 cd ros-cad
-docker build --pull --rm -f ./.docker/arm_64/Dockerfile  -t ros-cad:latest .
+docker build --pull --rm -f ./.docker/arm_64/Dockerfile  -t gdwyer/ros-cad:latest-arm64 .
+```
+
+### Combined Images
+Images are combined using docker manifest  
+TODO: move to docker buildx from [here](docker.com/blog/multi-arch-build-and-images-the-simple-way/)
+
+```
+docker manifest create \
+gdwyer/ros-cad:latest \
+--amend gdwyer/ros-cad:latest-amd64 \
+--amend gdwyer/ros-cad:latest-arm64
+
+docker manifest push gdwyer/ros-cad:latest
 ```
 
 #### Cross compilation

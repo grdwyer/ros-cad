@@ -112,6 +112,28 @@ RUN cmake \
 
 RUN make -j3 && make install
 
+#########
+# ROS 2 #
+#########
+RUN apt install -y\
+    ros-foxy-rqt \
+    ros-foxy-rqt-topic \
+    ros-foxy-rqt-top \
+    ros-foxy-rqt-srv \
+    ros-foxy-rqt-shell \
+    ros-foxy-rqt-service-caller \
+    ros-foxy-rqt-publisher \
+    ros-foxy-rqt-reconfigure \
+    ros-foxy-rqt-plot \
+    ros-foxy-rqt-msg \
+    ros-foxy-rqt-graph \
+    ros-foxy-rqt-console \
+    ros-foxy-rqt-common-plugins \
+    ros-foxy-rqt-action \
+    ros-foxy-rviz2
+
+RUN pip3 install Pyside2 
+
 ###########
 # Cleanup #
 ###########
